@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Space Design | Architectural Studio</title>
+    <style>
+        /* ==========================================================================
+           1. ROOT DESIGN SYSTEM VARIABLES & BASE RESETS
+           ========================================================================== */
+        :root {
+            --color-bg: #fdfdfd;
+            --color-text-main: #1c2024;
+            --color-text-muted: #505963;
+            --color-accent: #111111;
+            --color-sidebar-bg: #f4f5f6;
+            --color-accent-bg: #e4e6e8;
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --grid-gap: 30px;
+            --max-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--color-bg);
+            color: var(--color-text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ==========================================================================
+           2. HEADER & NAVIGATION STRUCTURAL ELEMENTS
+           ========================================================================== */
+        .site-header {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--color-accent-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        .logo a span {
+            font-weight: 300;
+            color: var(--color-text-muted);
+        }
+
+        .site-navigation ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .site-navigation a {
+            text-decoration: none;
+            color: var(--color-text-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.2s ease;
+        }
+
+        .site-navigation a:hover {
+            color: var(--color-text-muted);
+        }
+
+        /* ==========================================================================
+           3. HERO BANNER PROFILE
+           ========================================================================== */
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            height: 50vh;
+            min-height: 400px;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        /* ANTI-DISTORTION RULE: Object fit controls asset scale aspect ratio dynamically */
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.45); /* Balanced dark tint layout override */
+            color: #ffffff;
+            
+            /* Center elements horizontally and vertically */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-overlay h1 {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 16px auto;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .hero-overlay p {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #d1d5db;
+        }
+
+        /* ==========================================================================
+           4. LAYOUT GRID MATRIX SYSTEM (WIREFRAME 1: DESKTOP MULTI-COLUMN DESIGN)
+           ========================================================================== */
+        .layout-wrapper {
+            max-width: var(--max-width);
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            /* Main section consumes 70%, Aside section consumes 30% spacing */
+            grid-template-columns: 7fr 3fr;
+            gap: var(--grid-gap);
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .content-block h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            letter-spacing: -0.3px;
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 10px;
+        }
+
+        .content-block p {
+            color: var(--color-text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* PORTFOLIO DISPLAY CARDS */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--grid-gap);
+        }
+
+        .portfolio-card {
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ANTI-DISTORTION RULE: Prevent aspect ratio compression on portfolio content cards */
+        .portfolio-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            margin-bottom: 6px; /* Reduced to bring citation closer to the image */
+            border-radius: 2px;
+        }
+
+        /* Custom small-font styling for standard photo captions */
+        .photo-citation {
+            font-size: 0.72rem;
+            color: var(--color-text-muted);
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .portfolio-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-card p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ASIDE SIDEBAR MANAGEMENT */
+        .sidebar-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .sidebar-widget {
+            background-color: var(--color-sidebar-bg);
+            padding: 25px;
+            border-radius: 4px;
+        }
+
+        .sidebar-widget h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-widget p {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+        }
+
+        .sidebar-widget ul {
+            list-style-position: inside;
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+
+        .sidebar-widget ul li {
+            margin-bottom: 8px;
+        }
+
+        .bg-accent {
+            background-color: var(--color-accent-bg);
+            border-left: 4px solid var(--color-accent);
+        }
+
+        /* ==========================================================================
+           5. SITE FOOTER SYSTEM
+           ========================================================================== */
+        .site-footer {
+            background-color: var(--color-accent);
+            color: #ffffff;
+            margin-top: 60px;
+            padding: 40px 20px;
+        }
+
+        .footer-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.85rem;
+        }
+
+        .footer-meta {
+            color: #9ca3af;
+        }
+
+        /* ==========================================================================
+           6. RESPONSIVE RE-ARCHITECTURE MEDIA INJECTION (WIREFRAME 2: MOBILE VIEWPORT)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            /* Transforms multi-column layout wrapper into a single linear stacked block */
+            .layout-wrapper {
+                grid-template-columns: 1fr;
+                margin: 20px auto;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .site-navigation ul {
+                gap: 15px;
+            }
+
+            .hero-banner {
+                height: 40vh;
+            }
+
+            .hero-overlay h1 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SEMANTIC LANDMARK: HEADER SECTION -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="#home" aria-label="Aura Space Design Home">AURA<span>SPACE</span></a>
+            </div>
+            <!-- SEMANTIC LANDMARK: NAVIGATION -->
+            <nav class="site-navigation" aria-label="Main Site Navigation">
+                <ul>
+                    <li><a href="#about">About Studio</a></li>
+                    <li><a href="#portfolio">Our Portfolio</a></li>
+                    <li><a href="#services">Expertise</a></li>
+                    <li><a href="#contact">Connect</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO PROFILE GRAPHIC CONTAINER (FIRST PHOTO) -->
+    <section id="home" class="hero-banner" aria-label="Introduction Banner">
+        <!-- 
+            IMAGE SOURCE CITATION:
+            URL: https://images.unsplash.com/photo-1600585154340-be6161a56a0c
+            Author: David via Unsplash License (n.d)
+        -->
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" 
+             alt="Modern minimalist concrete and glass villa interior highlighting open space layout" 
+             class="hero-img">
+        <div class="hero-overlay">
+            <h1>Sculpting Light, Form, and Living Spaces.</h1>
+            <p>An award-winning interior architecture collective crafting sustainable environments globally.</p>
+        </div>
+    </section>
+
+    <!-- FIRST PHOTO CITATION (Placed directly under the photo, aligned to the right, using pure HTML styles) -->
+    <div style="text-align: right; max-width: 1200px; margin: 8px auto 0 auto; padding: 0 20px; font-size: 0.75rem; color: #505963; letter-spacing: 0.5px;">
+        Photo by David via Unsplash License(n.d)
+    </div>
+
+    <!-- TWO-COLUMN LAYOUT ADHERING TO THE DESKTOP WIREFRAME MODEL -->
+    <div class="layout-wrapper">
+        
+        <!-- SEMANTIC LANDMARK: MAIN ARTICLE AND CONTENT MATRIX -->
+        <main class="main-content" id="portfolio">
+            <section class="content-block">
+                <h2>Our Architectural Philosophies</h2>
+                <p>At Aura Space, we approach spatial planning as an equilibrium between environmental raw context and human behavior patterns. We select timeless materials that mature gracefully alongside the families living inside our geometric silhouettes.</p>
+            </section>
+
+            <section class="portfolio-grid">
+                <article class="portfolio-card">
+                    <!-- 
+                        IMAGE SOURCE CITATION:
+                        URL: https://images.unsplash.com/photo-1600596542815-ffad4c1539a9
+                        Author: R-Architecture via Unsplash License
+                    -->
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80" 
+                         alt="Exterior profile viewpoint of an asymmetric modern brutalist residential pavilion home" 
+                         class="portfolio-img">
+                    <span class="photo-citation">Photo by R-Architecture via Unsplash License (n.d)</span>
+                    <h3>The Brutalist Pavilion</h3>
+                    <p>A structural residence balancing raw structural poured concrete modules with custom-crafted teak accents nestled along a forested hillside line.</p>
+                </article>
+
+                <article class="portfolio-card">
+                    <!-- 
+                        IMAGE SOURCE CITATION:
+                        URL: https://images.unsplash.com/photo-1600607687939-ce8a6c25118c
+                        Author: R-Architecture via Unsplash License
+                    -->
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" 
+                         alt="Bright kitchen with natural skylight window elements illuminating wooden surfaces" 
+                         class="portfolio-img">
+                    <span class="photo-citation">Photo by R-Architecture via Unsplash License (n.d)</span>
+                    <h3>The Lumina Atrium</h3>
+                    <p>An urban townhome refurbishment focusing entirely on maximizing daylight harvesting channels via geometric skylight insertions.</p>
+                </article>
+            </section>
+        </main>
+
+        <!-- SEMANTIC LANDMARK: ASIDE SIDEBAR ELEMENT (Wireframe 1 Sidebar Content / Drops to bottom in Wireframe 2 Mobile) -->
+        <aside class="sidebar-info" id="about" aria-label="Studio Details and Accolades">
+            <div class="sidebar-widget">
+                <h3>Studio Overview</h3>
+                <p>Founded in 2018, our multi-disciplinary firm has transformed commercial urban zones and bespoke residential escapes across 14 international regions.</p>
+            </div>
+
+            <div class="sidebar-widget bg-accent" id="services">
+                <h3>Our Core Competencies</h3>
+                <ul>
+                    <li>Custom Interior Master Planning</li>
+                    <li>Sustainable Material Procurement</li>
+                    <li>Adaptive Reuse & Historic Preservation</li>
+                    <li>3D Spatial Environmental Modeling</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget" id="contact">
+                <h3>Consulting Inquiries</h3>
+                <p>Ready to redefine your environment? Book an initial creative layout call with our design partners.</p>
+                <p><strong>Email:</strong> project@auraspace.design</p>
+                <p><strong>Studio Location:</strong> 742 Geometric Blvd, Suite 10</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- SEMANTIC LANDMARK: FOOTER SYSTEM -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 Aura Space Architectural Design Group. Hand-coded from scratch. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
