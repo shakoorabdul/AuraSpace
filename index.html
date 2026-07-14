@@ -145,6 +145,19 @@
             color: #d1d5db;
         }
 
+        /* Visually hidden helper class for accessibility compliance */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         /* =====================================================================
            LAYOUT GRID MATRIX SYSTEM (WIREFRAME 1: DESKTOP MULTI-COLUMN DESIGN)
            =====================================================================*/
@@ -321,8 +334,9 @@
         </div>
     </header>
 
-    <!-- PROFILE GRAPHIC CONTAINER (FIRST PHOTO NATIVE HOVER POPUP TEXT) -->
+    <!-- FIXED: CHANGED BACK TO <section> WITH AN ACCESSIBLE, HIDDEN HEADING TO SATISFY ALL VALIDATION RULES -->
     <section id="home" class="hero-banner" aria-label="Introduction Banner">
+        <h2 class="visually-hidden">Introduction Banner</h2>
         <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" 
              alt="Modern minimalist concrete and glass villa interior highlighting open space layout" 
              title="Photo by David via Unsplash License (n.d)"
@@ -343,7 +357,8 @@
                 <p>At Aura Space, we approach spatial planning as an equilibrium between environmental raw context and human behavior patterns. We select timeless materials that mature gracefully alongside the families living inside our geometric silhouettes.</p>
             </section>
 
-            <section class="portfolio-grid">
+            <!-- RETAINED DIV WRAPPER: Sits cleanly here as an unlabelled layout element -->
+            <div class="portfolio-grid">
                 <article class="portfolio-card">
                     <!-- GRID PHOTO 1 NATIVE HOVER POPUP TEXT -->
                     <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80" 
@@ -363,7 +378,7 @@
                     <h3>The Lumina Atrium</h3>
                     <p>An urban townhome refurbishment focusing entirely on maximizing daylight harvesting channels via geometric skylight insertions.</p>
                 </article>
-            </section>
+            </div>
         </main>
 
         <!-- SEMANTIC LANDMARK: ASIDE SIDEBAR ELEMENT -->
