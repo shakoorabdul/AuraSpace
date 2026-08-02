@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Aura Space for project inquiries">
+    <title>Aura Space - Consultation Request</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- COMMON HEADER -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">AURA<span>SPACE</span></a>
+            </div>
+            <nav class="site-navigation" aria-label="Main Navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="gallery.html">Project Gallery</a></li>
+                    <li><a href="table.html">Pricing & Specs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="form-layout-wrapper">
+        <section class="form-header-section">
+            <h1>Start Your Architectural Project</h1>
+            <p>Fill out the form below to request a creative layout review with our principal design team.</p>
+        </section>
+
+        <!-- FORM IMPLEMENTATION -->
+        <form id="contactForm" class="custom-form" novalidate>
+            <div id="errorSummary" class="error-summary-box" style="display:none;"></div>
+
+            <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" name="fullName" required placeholder="Jane Doe">
+                <span class="field-error" id="nameError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="emailAddr">Email Address *</label>
+                <input type="email" id="emailAddr" name="emailAddr" required placeholder="jane@example.com">
+                <span class="field-error" id="emailError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="projectType">Project Category *</label>
+                <select id="projectType" name="projectType" required>
+                    <option value="">-- Choose Category --</option>
+                    <option value="residential">Residential Villa</option>
+                    <option value="commercial">Commercial Workspace</option>
+                    <option value="renovation">Interior Refurbishment</option>
+                </select>
+                <span class="field-error" id="typeError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="projectScope">Estimated Budget ($) *</label>
+                <input type="number" id="projectScope" name="projectScope" min="10000" placeholder="Minimum 10000">
+                <span class="field-error" id="scopeError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="messageBody">Project Brief *</label>
+                <textarea id="messageBody" name="messageBody" rows="5" placeholder="Provide project dimensions, site location, and key goals..."></textarea>
+                <span class="field-error" id="messageError"></span>
+            </div>
+
+            <button type="submit" class="btn-submit">Submit Consultation Request</button>
+        </form>
+
+        <!-- EXTENDED FORM EXPLANATION TO ENSURE 1.5x SCREEN HEIGHT -->
+        <section class="form-info-extended">
+            <h2>What Happens After Submission?</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <h3>1. Feasibility Assessment</h3>
+                    <p>Our engineering team reviews local zoning regulations, site conditions, and budget requirements within 48 business hours.</p>
+                </div>
+                <div class="step-card">
+                    <h3>2. Initial Discovery Call</h3>
+                    <p>We set up a video meeting to present preliminary material boards, rough timeline estimates, and spatial concepts.</p>
+                </div>
+                <div class="step-card">
+                    <h3>3. Formal Contract Proposal</h3>
+                    <p>Once parameters are finalized, a full proposal containing milestones and architectural deliverable schedules is issued.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- COMMON FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 Aura Space Architectural Design Group. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

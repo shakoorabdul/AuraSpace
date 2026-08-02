@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive visual gallery of Aura Space developments">
+    <title>Aura Space - Project Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- jQuery Core & Fancybox Plugin CSS/JS via CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+</head>
+<body>
+
+    <!-- COMMON HEADER -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">AURA<span>SPACE</span></a>
+            </div>
+            <nav class="site-navigation" aria-label="Main Navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="gallery.html">Project Gallery</a></li>
+                    <li><a href="table.html">Pricing & Specs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- FULL WIDTH GALLERY LAYOUT -->
+    <main class="gallery-layout-wrapper">
+        <section class="gallery-intro">
+            <h1>Interactive Project Portfolio</h1>
+            <p>Click any thumbnail below to launch the expanded high-resolution image lightbox viewer (Powered by Fancybox jQuery Plugin).</p>
+        </section>
+
+        <!-- JQUERY PLUGIN LIGHTBOX GRID -->
+        <div class="plugin-gallery-grid">
+            <a href="https://picsum.photos/id/1074/1200/800" data-fancybox="gallery" data-caption="Project A - Timber Pavilion Exterior">
+                <img src="https://picsum.photos/id/1074/400/300" alt="Timber Pavilion" class="responsive-img">
+            </a>
+            <a href="https://picsum.photos/id/1075/1200/800" data-fancybox="gallery" data-caption="Project B - High-Rise Concrete Balcony View">
+                <img src="https://picsum.photos/id/1075/400/300" alt="Concrete Balcony" class="responsive-img">
+            </a>
+            <a href="https://picsum.photos/id/1076/1200/800" data-fancybox="gallery" data-caption="Project C - Glass Facade Office Tower Atrium">
+                <img src="https://picsum.photos/id/1076/400/300" alt="Glass Facade" class="responsive-img">
+            </a>
+            <a href="https://picsum.photos/id/1077/1200/800" data-fancybox="gallery" data-caption="Project D - Custom Kitchen Island & Skylight Integration">
+                <img src="https://picsum.photos/id/1077/400/300" alt="Custom Kitchen" class="responsive-img">
+            </a>
+            <a href="https://picsum.photos/id/1078/1200/800" data-fancybox="gallery" data-caption="Project E - Open Concept Living Room & Floating Staircase">
+                <img src="https://picsum.photos/id/1078/400/300" alt="Floating Staircase" class="responsive-img">
+            </a>
+            <a href="https://picsum.photos/id/1079/1200/800" data-fancybox="gallery" data-caption="Project F - Underground Studio Vault Entrance">
+                <img src="https://picsum.photos/id/1079/400/300" alt="Studio Vault" class="responsive-img">
+            </a>
+        </div>
+
+        <!-- TALL CONTENT SECTION TO ENSURE 1.5x SCREEN HEIGHT REQUIREMENT -->
+        <section class="gallery-extended-content">
+            <h2>Detailed Material Case Studies</h2>
+            <div class="case-study-list">
+                <article class="case-card">
+                    <h3>Case Study 101: Reclaimed Cypress Siding</h3>
+                    <p>Installed across our Timber Pavilion project, these cypress boards were reclaimed from decommissioned local grain silos. The timber was pressure-treated using natural plant oils to retain weather resistance without environmental run-off.</p>
+                </article>
+                <article class="case-card">
+                    <h3>Case Study 102: Ultra-High Performance Concrete (UHPC)</h3>
+                    <p>For the Concrete Balcony project, UHPC allowed thin profile cantilevers that reduce overall dead load weight by 40% while doubling structural shear resistance against high winds.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- COMMON FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 Aura Space Architectural Design Group. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- PLUGIN INITIALIZATION SCRIPT -->
+    <script>
+        $(document).ready(function() {
+            Fancybox.bind("[data-fancybox='gallery']", {
+                infinite: true,
+                transitionEffect: "fade"
+            });
+        });
+    </script>
+</body>
+</html>
