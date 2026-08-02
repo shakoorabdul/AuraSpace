@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Portfolio - Aura Space Architecture</title>
+    <style>
+        /* =================================
+           SYSTEM VARIABLES & BASE RESETS
+           =================================*/
+        :root {
+            --color-bg: #fdfdfd;
+            --color-text-main: #1c2024;
+            --color-text-muted: #505963;
+            --color-accent: #111111;
+            --color-sidebar-bg: #f4f5f6;
+            --color-accent-bg: #e4e6e8;
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --grid-gap: 30px;
+            --max-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--color-bg);
+            color: var(--color-text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========================================
+           HEADER & NAVIGATION STRUCTURAL ELEMENTS
+           ========================================*/
+        .site-header {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--color-accent-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        .logo a span {
+            font-weight: 300;
+            color: var(--color-text-muted);
+        }
+
+        .site-navigation ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .site-navigation a {
+            text-decoration: none;
+            color: var(--color-text-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.2s ease;
+        }
+
+        .site-navigation a:hover,
+        .site-navigation a.active {
+            color: var(--color-text-muted);
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 4px;
+        }
+
+        /* ====================
+           HERO SECTION
+           ====================*/
+        .portfolio-hero {
+            background-color: var(--color-sidebar-bg);
+            padding: 60px 20px;
+            border-bottom: 1px solid var(--color-accent-bg);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .portfolio-hero h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.5px;
+            margin-bottom: 15px;
+            color: var(--color-accent);
+        }
+
+        .portfolio-hero p {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* ====================
+           PORTFOLIO FILTER
+           ====================*/
+        .filter-container {
+            max-width: var(--max-width);
+            margin: 40px auto 20px auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--color-accent-bg);
+            color: var(--color-text-main);
+            padding: 10px 20px;
+            font-family: var(--font-stack);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--color-accent);
+            color: #ffffff;
+            border-color: var(--color-accent);
+        }
+
+        /* ====================
+           PORTFOLIO GRID MATRIX
+           ====================*/
+        .portfolio-section {
+            max-width: var(--max-width);
+            margin: 0 auto 60px auto;
+            padding: 0 20px;
+        }
+
+        .grid-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--grid-gap);
+        }
+
+        .project-card {
+            background: #ffffff;
+            border: 1px solid var(--color-accent-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+        }
+
+        .project-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease, transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img {
+            opacity: 0.9;
+            transform: scale(1.03);
+        }
+
+        .project-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(17, 17, 17, 0.85);
+            color: #ffffff;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 2px;
+        }
+
+        .project-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-body h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--color-accent);
+        }
+
+        .project-meta {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .project-body p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .project-specs {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--color-accent-bg);
+            padding-top: 15px;
+            font-size: 0.85rem;
+            color: var(--color-text-main);
+            font-weight: 600;
+        }
+
+        /* ====================
+           STATISTICS BANNER
+           ====================*/
+        .stats-banner {
+            background-color: var(--color-accent);
+            color: #ffffff;
+            padding: 60px 20px;
+            margin-bottom: 60px;
+        }
+
+        .stats-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--color-accent-bg);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ====================
+           SITE FOOTER
+           ====================*/
+        .site-footer {
+            background-color: var(--color-accent);
+            color: #ffffff;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 40px 20px;
+        }
+
+        .footer-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* ====================
+           RESPONSIVE MEDIA
+           ====================*/
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .site-navigation ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .grid-matrix {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-hero h1 {
+                font-size: 2rem;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SEMANTIC LANDMARK: HEADER SECTION -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html" aria-label="Aura Space Design Home">AURA<span>SPACE</span></a>
+            </div>
+            <nav class="site-navigation" aria-label="Main Site Navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="gallery.html" class="active">Project Gallery</a></li>
+                    <li><a href="table.html">Pricing & Specs</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PORTFOLIO HERO BANNER -->
+    <section class="portfolio-hero">
+        <div class="hero-inner">
+            <h1>Selected Architectural Works</h1>
+            <p>A curated collection of residential sanctuaries, commercial landmarks, and sustainable urban revitalizations completed worldwide.</p>
+        </div>
+    </section>
+
+    <!-- FILTER BUTTONS -->
+    <div class="filter-container" aria-label="Project Categories">
+        <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
+        <button class="filter-btn" onclick="filterProjects('residential')">Residential</button>
+        <button class="filter-btn" onclick="filterProjects('commercial')">Commercial</button>
+        <button class="filter-btn" onclick="filterProjects('restoration')">Restoration</button>
+    </div>
+
+    <!-- MAIN PORTFOLIO GRID -->
+    <main class="portfolio-section">
+        <div class="grid-matrix">
+
+            <!-- PROJECT 1 -->
+            <article class="project-card" data-category="residential">
+                <div class="project-img-wrapper">
+                    <span class="project-tag">Residential</span>
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" 
+                         alt="Exterior of brutalist concrete pavilion home" 
+                         class="project-img">
+                </div>
+                <div class="project-body">
+                    <h3>The Brutalist Pavilion</h3>
+                    <div class="project-meta">Kyoto, Japan &bull; 2025</div>
+                    <p>A multi-tiered hillside residence pairing raw poured concrete forms with warm teak paneling to harmonize structured geometry with native pine forest.</p>
+                    <div class="project-specs">
+                        <span>Area: 4,800 sq ft</span>
+                        <span>Scope: Full Architecture</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PROJECT 2 -->
+            <article class="project-card" data-category="commercial">
+                <div class="project-img-wrapper">
+                    <span class="project-tag">Commercial</span>
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" 
+                         alt="Lumina Atrium skylight interior space" 
+                         class="project-img">
+                </div>
+                <div class="project-body">
+                    <h3>The Lumina Atrium</h3>
+                    <p>An innovative commercial studio redesign utilizing angled glass lightwells to capture 80% natural light throughout operating hours.</p>
+                    <div class="project-meta">Zurich, Switzerland &bull; 2024</div>
+                    <div class="project-specs">
+                        <span>Area: 12,500 sq ft</span>
+                        <span>Scope: Interior Architecture</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PROJECT 3 -->
+            <article class="project-card" data-category="residential">
+                <div class="project-img-wrapper">
+                    <span class="project-tag">Residential</span>
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" 
+                         alt="Minimalist modern glass villa interior" 
+                         class="project-img">
+                </div>
+                <div class="project-body">
+                    <h3>Monolith Lake Villa</h3>
+                    <div class="project-meta">Lake Como, Italy &bull; 2025</div>
+                    <p>Seamlessly integrated waterfront property featuring floor-to-ceiling glass systems that dissolve boundaries between living rooms and natural surroundings.</p>
+                    <div class="project-specs">
+                        <span>Area: 6,200 sq ft</span>
+                        <span>Scope: Architecture & Interiors</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PROJECT 4 -->
+            <article class="project-card" data-category="restoration">
+                <div class="project-img-wrapper">
+                    <span class="project-tag">Restoration</span>
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" 
+                         alt="Modernized historic masonry building" 
+                         class="project-img">
+                </div>
+                <div class="project-body">
+                    <h3>The Apex Foundry</h3>
+                    <div class="project-meta">London, UK &bull; 2023</div>
+                    <p>Adaptive reuse of a 19th-century industrial ironworks into a net-zero creative hub, blending exposed brickwork with modern steel framing.</p>
+                    <div class="project-specs">
+                        <span>Area: 18,000 sq ft</span>
+                        <span>Scope: Adaptive Reuse</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PROJECT 5 -->
+            <article class="project-card" data-category="commercial">
+                <div class="project-img-wrapper">
+                    <span class="project-tag">Commercial</span>
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" 
+                         alt="Minimalist open plan office studio" 
+                         class="project-img">
+                </div>
+                <div class="project-body">
+                    <h3>Vanguard Tech Campus</h3>
+                    <div class="project-meta">Stockholm, Sweden &bull; 2024</div>
+                    <p>An eco-conscious headquarter environment built entirely from mass timber, featuring acoustic greenery walls and flexible co-working pods.</p>
+                    <div class="project-specs">
+                        <span>Area: 32,000 sq ft</span>
+                        <span>Scope: Master Planning</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PROJECT 6 -->
+            <article class="project-card" data-category="restoration">
+                <div class="project-img-wrapper">
+                    <span class="project-tag">Restoration</span>
+                    <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80" 
+                         alt="Restored mid-century interior house" 
+                         class="project-img">
+                </div>
+                <div class="project-body">
+                    <h3>Solarium Residence</h3>
+                    <div class="project-meta">California, USA &bull; 2024</div>
+                    <p>Precision restoration of an iconic 1960s mid-century modern landmark, incorporating modern thermal glazing and hidden solar capture.</p>
+                    <div class="project-specs">
+                        <span>Area: 3,500 sq ft</span>
+                        <span>Scope: Restoration</span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- STATS / IMPACT SECTION -->
+    <section class="stats-banner">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h2>65+</h2>
+                <p>Completed Works</p>
+            </div>
+            <div class="stat-item">
+                <h2>14</h2>
+                <p>Countries</p>
+            </div>
+            <div class="stat-item">
+                <h2>12</h2>
+                <p>Design Awards</p>
+            </div>
+            <div class="stat-item">
+                <h2>100%</h2>
+                <p>Sustainable Focus</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 Aura Space Architectural Design Group. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE FILTER SCRIPT -->
+    <script>
+        function filterProjects(category) {
+            // Update active state on buttons
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            event.target.classList.add('active');
+
+            // Show / Hide projects
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
