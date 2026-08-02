@@ -6,9 +6,48 @@
     <meta name="description" content="Contact Aura Space for project inquiries">
     <title>Aura Space - Consultation Request</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Full-Bleed Edge-to-Edge Hero Banner */
+        .form-header-section {
+            position: relative;
+            width: 100%;
+            padding: 100px 20px;
+            background: linear-gradient(rgba(17, 17, 17, 0.65), rgba(17, 17, 17, 0.65)),
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 0; /* Ensures square edges flush to screen sides */
+            margin-bottom: 40px;
+        }
+
+        .form-header-section h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .form-header-section p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #e4e6e8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .form-header-section {
+                padding: 60px 15px;
+            }
+            .form-header-section h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
     <!-- COMMON HEADER -->
     <header class="site-header">
         <div class="header-container">
@@ -17,7 +56,7 @@
             </div>
             <nav class="site-navigation" aria-label="Main Navigation">
                 <ul>
-                   <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="gallery.html" class="active">Project Gallery</a></li>
                     <li><a href="table.html">Pricing & Specs</a></li>
@@ -27,12 +66,13 @@
         </div>
     </header>
 
-    <main class="form-layout-wrapper">
-        <section class="form-header-section">
-            <h1>Start Your Architectural Project</h1>
-            <p>Fill out the form below to request a creative layout review with our principal design team.</p>
-        </section>
+    <!-- FULL-WIDTH HERO BANNER (OUTSIDE MAIN WRAPPER) -->
+    <section class="form-header-section">
+        <h1>Start Your Architectural Project</h1>
+        <p>Fill out the form below to request a creative layout review with our principal design team.</p>
+    </section>
 
+    <main class="form-layout-wrapper">
         <!-- FORM IMPLEMENTATION -->
         <form id="contactForm" class="custom-form" novalidate>
             <div id="errorSummary" class="error-summary-box" style="display:none;"></div>
@@ -101,7 +141,6 @@
             <p>&copy; 2026 Aura Space Architectural Design Group. All rights reserved.</p>
         </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
