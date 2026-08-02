@@ -166,7 +166,6 @@
             to { opacity: 1; }
         }
 
-        /* Visually hidden helper class for accessibility compliance */
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -333,7 +332,7 @@
         }
 
         /* ==========================================================================
-           RESPONSIVE RE-ARCHITECTURE MEDIA INJECTION (MOBILE VIEWPORT)
+           RESPONSIVE MEDIA INJECTION (MOBILE VIEWPORT)
            ========================================================================== */
         @media (max-width: 768px) {
             .layout-wrapper {
@@ -379,11 +378,12 @@
             <div class="logo">
                 <a href="index.html" aria-label="Aura Space Design Home">AURA<span>SPACE</span></a>
             </div>
+            <!-- TOP RIGHT NAVIGATION MENU -->
             <nav class="site-navigation" aria-label="Main Site Navigation">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="gallery.html" class="active">Project Gallery</a></li>
+                    <li><a href="gallery.html">Project Gallery</a></li>
                     <li><a href="table.html">Pricing & Specs</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                 </ul>
@@ -391,7 +391,7 @@
         </div>
     </header>
 
-    <!-- INTEGRATED ACCESSIBLE SLIDESHOW HERO BANNER -->
+    <!-- ACCESSIBLE SLIDESHOW HERO BANNER -->
     <section id="home" class="slideshow-wrapper" aria-label="Featured Projects Slideshow">
         <h2 class="visually-hidden">Featured Architectural Works</h2>
         
@@ -420,11 +420,11 @@
         <button class="next" onclick="moveSlide(1)" aria-label="Next Slide">&#10095;</button>
     </section>
 
-    <!-- TWO-COLUMN LAYOUT ADHERING TO THE DESKTOP WIREFRAME MODEL -->
+    <!-- TWO-COLUMN LAYOUT -->
     <div class="layout-wrapper">
         
-        <!-- SEMANTIC LANDMARK: MAIN ARTICLE AND CONTENT MATRIX -->
-        <main class="main-content" id="portfolio">
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
             <section class="content-block">
                 <h2>Our Architectural Philosophies</h2>
                 <p>At Aura Space, we approach spatial planning as an equilibrium between environmental raw context and human behavior patterns. We select timeless materials that mature gracefully alongside the families living inside our geometric silhouettes.</p>
@@ -451,8 +451,8 @@
                 </article>
             </div>
 
-            <!-- EXTENDED CONTENT SECTION TO FULFILL 1.5x SCREEN HEIGHT REQUIREMENT -->
-            <section class="tall-section" id="methodology">
+            <!-- EXTENDED CONTENT SECTION FOR PAGE HEIGHT -->
+            <section class="tall-section">
                 <h2>Our Design Methodology</h2>
                 <p>Every project starts with environmental impact modeling and lifecycle analysis. We integrate passive cooling, renewable materials, and low-VOC finishes into every architectural document.</p>
                 <div class="methodology-grid">
@@ -472,14 +472,14 @@
             </section>
         </main>
 
-        <!-- SEMANTIC LANDMARK: ASIDE SIDEBAR ELEMENT -->
-        <aside class="sidebar-info" id="about" aria-label="Studio Details and Accolades">
+        <!-- SIDEBAR -->
+        <aside class="sidebar-info" aria-label="Studio Details and Accolades">
             <div class="sidebar-widget">
                 <h3>Studio Overview</h3>
                 <p>Founded in 2018, our multi-disciplinary firm has transformed commercial urban zones and bespoke residential escapes across 14 international regions.</p>
             </div>
 
-            <div class="sidebar-widget bg-accent" id="services">
+            <div class="sidebar-widget bg-accent">
                 <h3>Our Core Competencies</h3>
                 <ul>
                     <li>Custom Interior Master Planning</li>
@@ -489,7 +489,7 @@
                 </ul>
             </div>
 
-            <div class="sidebar-widget" id="contact">
+            <div class="sidebar-widget">
                 <h3>Consulting Inquiries</h3>
                 <p>Ready to redefine your environment? Book an initial creative layout call with our design partners.</p>
                 <br>
@@ -500,14 +500,14 @@
 
     </div>
 
-    <!-- SEMANTIC LANDMARK: FOOTER SYSTEM -->
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="footer-container">
             <p>&copy; 2026 Aura Space Architectural Design Group. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- INLINE SLIDESHOW SCRIPT (OR LINK TO EXTERNAL SCRIPT.JS) -->
+    <!-- SLIDESHOW SCRIPT -->
     <script>
         let slideIndex = 1;
         showSlides(slideIndex);
@@ -531,7 +531,6 @@
             slides[slideIndex - 1].style.display = "block";
         }
 
-        // Automatic slide progression every 6 seconds
         setInterval(() => {
             moveSlide(1);
         }, 6000);
